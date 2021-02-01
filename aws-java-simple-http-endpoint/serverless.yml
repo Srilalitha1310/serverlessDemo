@@ -18,3 +18,24 @@ functions:
       - http:
           path: ping
           method: get
+
+plugins:
+  - serverless-vpc-plugin
+
+custom:
+  vpcConfig:
+    cidrBlock: "10.0.0.0/16"
+    createNatGateway: 1
+    createNetworkAcl: false
+    createDbSubnet: false
+    createFlowLogs: false
+    createBastionHost: false
+    createNatInstance: false
+    createParameters: false
+    zones:
+      - eu-central-1a
+      - eu-central-1b
+    services:
+      - s3
+    subnetGroups:
+      - rds
